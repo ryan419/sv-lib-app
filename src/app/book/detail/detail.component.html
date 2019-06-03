@@ -1,3 +1,14 @@
-<p>
-  detail works!
-</p>
+<div *ngIf="detail$ | async; let detail">
+  <h1>
+    {{detail.title}}
+  </h1>
+  <h3>
+    {{detail.author}}
+  </h3>
+  <mat-card *ngFor="let borrow of detail.borrows">
+    <mat-card-header>
+      <mat-card-title>{{borrow.member.firstName}} {{borrow.member.lastName}}</mat-card-title>
+      <mat-card-subtitle>Borrowed on {{borrow.borrowDate}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
