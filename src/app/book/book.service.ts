@@ -14,6 +14,7 @@ export class BookService {
           {
             books {
               nodes {
+                id
                 title
                 author
                 publishDate
@@ -22,8 +23,6 @@ export class BookService {
           }
         `,
       })
-      .valueChanges.pipe(
-        map((res: any) => res.data.books.nodes as Array<any>),
-      );
+      .valueChanges.pipe(map((res: any) => res.data.books.nodes as Array<any>));
   }
 }
