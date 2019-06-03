@@ -8,13 +8,12 @@ import { BookService } from './book.service';
 })
 export class BookComponent implements OnInit {
 
+  private books$;
+
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
-  }
-
-  get books() {
-    return this.bookService.books;
+    this.books$ = this.bookService.getAllBooks();
   }
 
 }

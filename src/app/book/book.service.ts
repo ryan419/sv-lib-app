@@ -7,11 +7,11 @@ import gql from 'graphql-tag';
 export class BookService {
   constructor(private apollo: Apollo) {}
 
-  get books() {
+  public getAllBooks() {
     return this.apollo
       .watchQuery({
         query: gql`
-          query {
+          {
             books {
               nodes {
                 title
@@ -23,7 +23,7 @@ export class BookService {
         `,
       })
       .valueChanges.pipe(
-        map((res: any) => res.data.allTodos.nodes as Array<any>),
+        map((res: any) => res.data.books.nodes as Array<any>),
       );
   }
 }
