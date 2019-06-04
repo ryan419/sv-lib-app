@@ -5,10 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { AppRoutingModule } from './app-routing.module';
+import { CreateModule } from './book/create/create.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +23,10 @@ import { AppRoutingModule } from './app-routing.module';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatNativeDateModule,
+    MatDialogModule,
     AppRoutingModule,
+    CreateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
