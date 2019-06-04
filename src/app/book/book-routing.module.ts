@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BookComponent } from './book.component';
 import { DetailModule } from './detail/detail.module';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: BookComponent,
@@ -15,9 +15,3 @@ const routes: Routes = [
       import('./detail/detail.module').then(mod => DetailModule),
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class BookRoutingModule {}

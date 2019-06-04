@@ -5,6 +5,9 @@
   <h3>
     {{detail.author}}
   </h3>
+  <h3>
+    Publish: {{detail.publishDate}}
+  </h3>
   <mat-card *ngFor="let borrow of detail.borrows">
     <mat-card-header>
       <mat-card-title>{{borrow.member.firstName}} {{borrow.member.lastName}}</mat-card-title>
