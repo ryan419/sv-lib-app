@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CreateService } from './create.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create',
@@ -10,7 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CreateComponent implements OnInit {
   form: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<CreateComponent>, private fb: FormBuilder) {}
+  constructor(
+    public dialogRef: MatDialogRef<CreateComponent>,
+    private fb: FormBuilder,
+    private createService: CreateService,
+  ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -22,5 +28,14 @@ export class CreateComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onSubmit(): void {
+    const bookDetails = this.form.value;
+    this.createService.createBook(bookDetails)
+      .pipe(take(1))
+      .subscribe(res => {
+        this.dialogRef.close();
+      });
   }
 }

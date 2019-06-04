@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { CreateComponent } from './create.component';
+import { CreateService } from './create.service';
+import { GraphQLModule } from '../../graphql.module';
 
 @NgModule({
   declarations: [CreateComponent],
@@ -19,8 +21,10 @@ import { CreateComponent } from './create.component';
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
+    GraphQLModule,
   ],
   entryComponents: [CreateComponent],
   exports: [CreateComponent],
+  providers: [CreateService],
 })
 export class CreateModule {}

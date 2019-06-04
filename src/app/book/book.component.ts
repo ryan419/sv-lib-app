@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from './book.service';
 import { Router } from '@angular/router';
+
+import { BookService } from './book.service';
 
 @Component({
   selector: 'app-book',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit {
-  private books$;
+  public books$;
 
   constructor(private bookService: BookService, private router: Router) {}
 
