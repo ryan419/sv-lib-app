@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Apollo } from 'apollo-angular';
+import { Apollo, QueryRef } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class BookService {
-  constructor(private apollo: Apollo) {}
+  private booksQuery: QueryRef<any>;
 
-  public getAllBooks() {
-    return this.apollo
+  constructor(private apollo: Apollo) {
+    this.booksQuery = this.apollo
       .watchQuery({
         query: gql`
           {
@@ -22,7 +24,16 @@ export class BookService {
             }
           }
         `,
-      })
-      .valueChanges.pipe(map((res: any) => res.data.books.nodes as Array<any>));
+      });
+  }
+
+  public refresh() {
+    this.booksQuery.refetch();
+  }
+
+  public getAllBooks() {
+    return this.booksQuery
+      .valueChanges
+      .pipe(map((res: any) => res.data.books.nodes as Array<any>));
   }
 }

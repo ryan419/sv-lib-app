@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CreateModule } from './book/create/create.module';
+import { BookModule } from './book/book.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { CreateModule } from './book/create/create.module';
     MatDialogModule,
     AppRoutingModule,
     CreateModule,
+    BookModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,6 +7,7 @@ import { BookRoutingModule } from './book-routing.module';
 import { BookComponent } from './book.component';
 import { BookService } from './book.service';
 import { GraphQLModule } from '../graphql.module';
+import { DeleteService } from './delete.service';
 
 @NgModule({
   declarations: [BookComponent],
@@ -17,6 +18,6 @@ import { GraphQLModule } from '../graphql.module';
     MatCardModule,
     GraphQLModule,
   ],
-  providers: [BookService],
+  providers: [BookService, DeleteService],
 })
 export class BookModule {}
